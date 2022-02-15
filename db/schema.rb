@@ -10,10 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_10_005743) do
+ActiveRecord::Schema.define(version: 2022_02_15_003901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "service_id", null: false
+    t.datetime "date_requested"
+    t.string "firstname"
+    t.string "lastname"
+    t.integer "phone_number"
+    t.string "city"
+    t.string "vehicle_make"
+    t.string "vehicle_model"
+    t.integer "vehicle_year"
+    t.string "vehicle_color"
+    t.text "message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["service_id"], name: "index_appointments_on_service_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.integer "duration"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -23,4 +50,6 @@ ActiveRecord::Schema.define(version: 2022_02_10_005743) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "appointments", "services"
+  add_foreign_key "appointments", "users"
 end
