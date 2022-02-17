@@ -1,22 +1,31 @@
 
 import '../App.css';
 import { useState, useEffect } from 'react'
-import { Switch, Route, useHistory } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import NavBar from './NavBar';
 import LandingPage from './LandingPage';
 
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#96272D'
+    },
+    secondary: {
+      main: '#00405C'
+    }
+  }
+})
+
 function App() {
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <div>
         <NavBar />
-        <Switch>
-          <Route path='/'>
-            <LandingPage />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path='/' element={<LandingPage />} />
+        </Routes>
       </div>
     </ThemeProvider>
   );
