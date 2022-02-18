@@ -5,6 +5,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import NavBar from './NavBar';
 import LandingPage from './LandingPage';
+import Footer from './Footer';
 
 
 const theme = createTheme({
@@ -18,6 +19,7 @@ const theme = createTheme({
   }
 })
 
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -26,6 +28,7 @@ function App() {
         <Routes>
           <Route path='/' element={<LandingPage />} />
         </Routes>
+        <Footer />
       </div>
     </ThemeProvider>
   );
