@@ -14,12 +14,12 @@ const userSlice = createSlice({
         status: 'idle'
     },
     reducers: {
-        logIn: (state, action) => {
+        setUser(state, action) {
             state.entities = action.payload
         }
     }
 })
 
-export const { logIn } = userSlice.actions
+export const { setUser } = userSlice.actions
 
 export default userSlice.reducer

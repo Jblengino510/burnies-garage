@@ -1,5 +1,7 @@
-import React from 'react'
+import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { setUser  } from '../Redux/Slices/userSlice'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -8,7 +10,12 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 
 function RegisterForm() {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
+    const [ email, setEmail ] = useState('')
+    const [ password, setPassword ] = useState('')
+    const [ passwordConfirm, setPasswordConfirm ] = useState('')
+    const [ errors, setErrors ] = useState([])
 
 
   return (
@@ -23,14 +30,14 @@ function RegisterForm() {
             <Typography variant='h4' color='secondary'>Create Account</Typography>
             <br />
             <br />
-            <TextField label='Email' variant='outlined' color='secondary' sx={{width: '50%'}}/>
+            <TextField label='Email' variant='outlined' color='secondary' sx={{width: '50%'}} onChange={(e) => setEmail(e.target.value)}/>
             <br />
-            <TextField label='Password' variant='outlined' color='secondary' sx={{width: '50%'}}/>
+            <TextField type='password' label='Password' variant='outlined' color='secondary' sx={{width: '50%'}} onChange={(e) => setPassword(e.target.value)}/>
             <br />
-            <TextField label='Confirm Password' variant='outlined' color='secondary' sx={{width: '50%'}}/>
+            <TextField type='password' label='Confirm Password' variant='outlined' color='secondary' sx={{width: '50%'}} onChange={(e) => setPasswordConfirm(e.target.value)}/>
             <br />
             <br />
-            <Button variant='contained' size='large' sx={{borderRadius: '20px', width: '50%'}}>Submit</Button>
+            <Button type='submit' variant='contained' size='large' sx={{borderRadius: '20px', width: '50%'}}>Submit</Button>
           </form>
           <Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', mt: '20px'}}>
             <Typography variant='body1' color='secondary'>
@@ -40,6 +47,15 @@ function RegisterForm() {
               <strong>&nbsp;Login</strong>
             </Typography>
           </Box>
+          {(errors.length > 0) ? 
+              <Box sx={{mt: '20px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                {errors.map(error => 
+                <Typography key={error} color='error'>{error}</Typography>
+                )}
+              </Box> 
+              : 
+              null
+              }
         </Grid>
       </Grid>
     </Box>

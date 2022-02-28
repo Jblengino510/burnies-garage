@@ -1,5 +1,7 @@
-import React from 'react'
+import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { setUser } from '../Redux/Slices/userSlice'
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -8,7 +10,34 @@ import Button from '@mui/material/Button';
 import Divider from '@mui/material/Divider';
 
 function LoginForm() {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [ email, setEmail ] = useState('')
+  const [ password, setPassword ] = useState('')
+  const [ errors, setErrors ] = useState([])
+
+  function handleLoginSubmit(e) {
+    e.preventDefault()
+
+    const userObj = {
+      email: email,
+      password: password
+    }
+
+    fetch('/login', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(userObj)
+    })
+    .then(res => {
+      if (res.ok) {
+        res.json().then(user => dispatch(setUser((user))))
+      } else {
+        res.json().then(err => setErrors(err.errors))
+      }
+    })
+
+  }
 
 
   return (
@@ -19,16 +48,16 @@ function LoginForm() {
         </Grid>
         <Divider orientation='vertical' sx={{height: '200px'}}/>
         <Grid item xs={5} sx={{backgroundColor: ''}}>
-          <form style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-            <Typography variant='h4' color='secondary'>Login</Typography>
+          <form onSubmit={handleLoginSubmit} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <Typography variant='h4' color='secondary'>Welcome Back</Typography>
             <br />
             <br />
-            <TextField label='Email' variant='outlined' color='secondary' sx={{width: '50%'}}/>
+            <TextField label='Email' variant='outlined' color='secondary' sx={{width: '50%'}} onChange={(e) => setEmail(e.target.value)}/>
             <br />
-            <TextField label='Password' variant='outlined' color='secondary' sx={{width: '50%'}}/>
+            <TextField type='password' label='Password' variant='outlined' color='secondary' sx={{width: '50%'}} onChange={(e) => setPassword(e.target.value)}/>
             <br />
             <br />
-            <Button variant='contained' size='large' sx={{borderRadius: '30px', width: '50%'}}>Submit</Button>
+            <Button type='submit' variant='contained' size='large' sx={{borderRadius: '30px', width: '50%'}}>Login</Button>
           </form>
           <Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', mt: '20px'}}>
             <Typography variant='body1' color='secondary' >
@@ -38,6 +67,15 @@ function LoginForm() {
               <strong>&nbsp;Register</strong>
             </Typography>
           </Box>
+            {(errors.length > 0) ? 
+              <Box sx={{mt: '20px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+                {errors.map(error => 
+                <Typography key={error} color='error'>{error}</Typography>
+                )}
+              </Box> 
+              : 
+              null
+              }
         </Grid>
       </Grid>
     </Box>
