@@ -28,7 +28,9 @@ function NavBar() {
             </Button>
           </Box>
           <Box sx={{flexGrow: 1}}></Box>
-          <Button variant='contained' size='large' href='/register'>Register</Button>
+          <Button variant='contained' size='large' href='/register' sx={{borderRadius: '30px', padding: '10px', width: '120px'}}>
+            Register
+          </Button>
         </Toolbar>
       </AppBar>
     </>

@@ -6,6 +6,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import NavBar from './NavBar';
 import LandingPage from './LandingPage';
 import Footer from './Footer';
+import LoginForm from './LoginForm'
+import RegisterForm from './RegisterForm'
 
 
 const theme = createTheme({
@@ -26,6 +28,8 @@ function App() {
       <div>
         <NavBar />
         <Routes>
+          <Route path='/register' element={<RegisterForm />} />
+          <Route path='/login' element={<LoginForm />} />
           <Route path='/' element={<LandingPage />} />
         </Routes>
         <Footer />
