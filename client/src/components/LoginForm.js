@@ -31,7 +31,7 @@ function LoginForm() {
     })
     .then(res => {
       if (res.ok) {
-        res.json().then(user => dispatch(setUser((user))))
+        res.json().then(user => dispatch(setUser((user)))).then(() => navigate('/'))
       } else {
         res.json().then(err => setErrors(err.errors))
       }

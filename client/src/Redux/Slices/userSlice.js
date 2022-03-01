@@ -3,7 +3,10 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const fetchLoggedInUser = createAsyncThunk('user/fetchLoggedInUser', () => {
     return fetch('/me')
     .then(res => res.json())
-    .then(data => data)
+    .then(data => {
+        console.log(data)
+        return data
+    })
 })
 
 const userSlice = createSlice({
@@ -14,7 +17,7 @@ const userSlice = createSlice({
         status: 'idle'
     },
     reducers: {
-        setUser(state, action) {
+        setUser: (state, action) => {
             state.entities = action.payload
         }
     }

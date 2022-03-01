@@ -1,6 +1,6 @@
 import '../App.css';
 import { useState, useEffect } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import NavBar from './NavBar';
@@ -25,16 +25,15 @@ const theme = createTheme({
 
 function App() {
   const dispatch = useDispatch()
+  const user = useSelector(state => state.user.entities)
   
+
   useEffect(() => {
-    console.log(dispatch)
-    console.log(fetchLoggedInUser())
     dispatch(fetchLoggedInUser())
   }, [])
 
   return (
     <ThemeProvider theme={theme}>
-      <div>
         <NavBar />
         <Routes>
           <Route path='/register' element={<RegisterForm />} />
@@ -42,7 +41,6 @@ function App() {
           <Route path='/' element={<LandingPage />} />
         </Routes>
         <Footer />
-      </div>
     </ThemeProvider>
   );
 }
