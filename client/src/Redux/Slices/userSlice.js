@@ -3,10 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const fetchLoggedInUser = createAsyncThunk('user/fetchLoggedInUser', () => {
     return fetch('/me')
     .then(res => res.json())
-    .then(data => {
-        console.log(data)
-        return data
-    })
+    .then(data => data)
 })
 
 const userSlice = createSlice({
@@ -19,6 +16,25 @@ const userSlice = createSlice({
     reducers: {
         setUser: (state, action) => {
             state.entities = action.payload
+        }
+    },
+    extraReducers: {
+        [fetchLoggedInUser.pending]: (state) => {
+            state.status = 'loading'
+        },
+        [fetchLoggedInUser.fulfilled]: (state, { payload }) => {
+            if (Object.keys(payload).includes('error')) {
+                state.entities = false
+                state.errors = payload.error
+                state.status = 'error'
+            } else {
+                state.entities = payload
+                state.errors = []
+                state.status = 'success'
+            }
+        },
+        [fetchLoggedInUser.rejected]: (state) => {
+            state.status = 'failed'
         }
     }
 })

@@ -30,7 +30,8 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchLoggedInUser())
-  }, [])
+  }, [dispatch])
+
 
   return (
     <ThemeProvider theme={theme}>
