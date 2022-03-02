@@ -16,6 +16,31 @@ function RegisterForm() {
     const [ password, setPassword ] = useState('')
     const [ passwordConfirm, setPasswordConfirm ] = useState('')
     const [ errors, setErrors ] = useState([])
+   
+
+    function handleSignUpSubmit(e) {
+      e.preventDefault()
+
+      const userObj = {
+        email: email,
+        password: password,
+        password_confirmation: passwordConfirm,
+        is_admin: false
+      }
+
+      fetch('/signup', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(userObj)
+      })
+      .then(res => {
+        if (res.ok) {
+          res.json().then(newUser => dispatch(setUser(newUser))).then(() => navigate('/'))
+        } else {
+          res.json().then(err => setErrors(err.errors))
+        }
+      })
+    }
 
 
   return (
@@ -26,7 +51,7 @@ function RegisterForm() {
         </Grid>
         <Divider orientation='vertical' sx={{height: '200px'}}/>
         <Grid item xs={5} sx={{backgroundColor: ''}}>
-          <form style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+          <form onSubmit={handleSignUpSubmit} style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
             <Typography variant='h4' color='secondary'>Create Account</Typography>
             <br />
             <br />

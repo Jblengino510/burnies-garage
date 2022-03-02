@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   resources :appointments
   resources :services
-  resources :users, only: [:show, :create]
+  resources :users, only: [:show, :index, :create]
 
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'

@@ -14,8 +14,11 @@ const userSlice = createSlice({
         status: 'idle'
     },
     reducers: {
-        setUser: (state, action) => {
-            state.entities = action.payload
+        setUser: (state, { payload }) => {
+            state.entities = payload
+            state.errors = []
+            state.status = 'success'
+
         }
     },
     extraReducers: {

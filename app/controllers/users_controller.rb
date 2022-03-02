@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 
-    before_action :authorize, except: [:create]
+    before_action :authorize, except: [:create, :index]
+
+    def index
+        render json: User.all
+    end
 
     #'/me'
     def show
