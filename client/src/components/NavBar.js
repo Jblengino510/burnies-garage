@@ -50,12 +50,12 @@ function NavBar() {
           </Box>
           <Box sx={{flexGrow: 1}}></Box>
           { user ? 
-            <Button variant='contained' size='large' onClick={handleLogoutSubmit} sx={{borderRadius: '30px', padding: '10px', width: '120px'}}>
-              Logout
+            <Button variant='contained' size='large' onClick={handleLogoutSubmit} sx={{border: 'none', borderRadius: '40px', outline: 'none', padding: '15px', paddingLeft: '40px', paddingRight: '40px'}}>
+              <strong>Logout</strong>
             </Button> 
             :
-            <Button variant='contained' size='large' href='/register' sx={{borderRadius: '30px', padding: '10px', width: '120px'}}>
-              Register
+            <Button variant='contained' size='large' href='/register' sx={{border: 'none', borderRadius: '40px', outline: 'none', padding: '15px', paddingLeft: '40px', paddingRight: '40px'}}>
+              <strong>Register</strong>
             </Button> 
           }
         </Toolbar>

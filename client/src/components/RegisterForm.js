@@ -62,7 +62,9 @@ function RegisterForm() {
             <TextField type='password' label='Confirm Password' variant='outlined' color='secondary' sx={{width: '50%'}} onChange={(e) => setPasswordConfirm(e.target.value)}/>
             <br />
             <br />
-            <Button type='submit' variant='contained' size='large' sx={{borderRadius: '20px', width: '50%'}}>Submit</Button>
+            <Button type='submit' variant='contained' size='large' sx={{borderRadius: '20px', width: '50%'}}>
+              <strong>Submit</strong>
+            </Button>
           </form>
           <Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', mt: '20px'}}>
             <Typography variant='body1' color='secondary'>

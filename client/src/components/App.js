@@ -19,6 +19,9 @@ const theme = createTheme({
     secondary: {
       main: '#00405C'
     }
+  },
+  typography: {
+    fontFamily: 'Inter (Bold)'
   }
 })
 

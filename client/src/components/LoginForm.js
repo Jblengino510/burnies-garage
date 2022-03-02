@@ -57,7 +57,9 @@ function LoginForm() {
             <TextField type='password' label='Password' variant='outlined' color='secondary' sx={{width: '50%'}} onChange={(e) => setPassword(e.target.value)}/>
             <br />
             <br />
-            <Button type='submit' variant='contained' size='large' sx={{borderRadius: '30px', width: '50%'}}>Login</Button>
+            <Button type='submit' variant='contained' size='large' sx={{borderRadius: '30px', width: '50%'}}>
+              <strong>Login</strong>
+            </Button>
           </form>
           <Box sx={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center', mt: '20px'}}>
             <Typography variant='body1' color='secondary' >
