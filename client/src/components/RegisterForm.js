@@ -44,10 +44,10 @@ function RegisterForm() {
 
 
   return (
-    <Box sx={{height: '100vh', display: 'flex', justifyContent: 'center'}}>
+    <Box sx={{mt: '100px', height: '100vh', display: 'flex', justifyContent: 'center'}}>
       <Grid container justifyContent='center' alignItems="center">
         <Grid item xs={5} sx={{display: 'flex', justifyContent: 'center'}}>
-          <img src='/Jason_logo_1.jpeg' width='400px'/>
+          <img src='/burniesgarage-logo.png' width='400px'/>
         </Grid>
         <Divider orientation='vertical' sx={{height: '200px'}}/>
         <Grid item xs={5} sx={{backgroundColor: ''}}>

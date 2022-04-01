@@ -5,10 +5,10 @@ import Grid from '@mui/material/Grid';
 
 function Footer() {
   return (
-    <footer style={{width: '100vw', height: '30vh'}}>
+    <footer style={{width: '100vw', height: '100%'}}>
         <Grid container direction='column' justifyContent='center' alignItems="center">
             <Grid item xs={12}>
-                <img src='/Jason_logo_1.jpeg' alt='Burnies Garage Logo' width='50px' height='50px' />
+                <img src='/burniesgarage-logo.png' alt='Burnies Garage Logo' width='50px' height='50px' />
             </Grid>
             <Grid item xs={12}>
                 <Typography variant='h6' color='secondary'><strong>San Leandro, CA</strong></Typography>

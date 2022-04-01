@@ -21,7 +21,18 @@ const theme = createTheme({
     }
   },
   typography: {
-    fontFamily: 'Inter (Bold)'
+    fontFamily: 'Inter',
+    fontWeightLight: 400,
+    fontWeightRegular: 500,
+    fontWeightMedium: 600,
+    fontWeightBold: 700,
+  },
+  components: {
+    MuiButtonBase: {
+      defaultProps: {
+        disableRipple: true
+      }
+    }
   }
 })
 

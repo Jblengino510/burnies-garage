@@ -29,22 +29,22 @@ function NavBar() {
 
   return (
     <>
-      <AppBar position='fixed' elevation={0} sx={{background: '#FFFFFF', width: '100vw', padding: '20px'}}>
+      <AppBar position='fixed' elevation={0} sx={{bgcolor: '#FFFFFF', width: '100%', padding: '20px'}}>
         <Toolbar>
           <Link to='/'>
-            <img src='/Jason_logo_1.jpeg' alt='Burnies Garage Logo' width='100px' height='100px' />
+            <img src='/burniesgarage-logo.png' alt='Burnies Garage Logo' width='100px' height='100px' />
           </Link>
           <Box>
-            <Button variant='text' color='secondary' size='large' href='/' sx={{ml: '40px', borderRadius: '0px', '&:hover': {cursor: 'pointer', borderBottom: '3px solid #96272D', background: 'none'}}}>
+            <Button variant='text' color='secondary' size='large' onClick={() => navigate('/')} sx={{ml: '40px', borderRadius: '0px', '&:hover': {cursor: 'pointer', borderBottom: '3px solid #96272D', background: 'none'}}}>
               <strong>Home</strong>
             </Button>
-            <Button variant='text' color='secondary' size='large' href='/mywork' sx={{ml: '20px', borderRadius: '0px', '&:hover': {cursor: 'pointer', borderBottom: '3px solid #96272D', background: 'none'}}}>
+            <Button variant='text' color='secondary' size='large' onClick={() => navigate('/mywork')} sx={{ml: '20px', borderRadius: '0px', '&:hover': {cursor: 'pointer', borderBottom: '3px solid #96272D', background: 'none'}}}>
               <strong>My Work</strong>
             </Button>
-            <Button variant='text' color='secondary' size='large' href='/services' sx={{ml: '20px', borderRadius: '0px', '&:hover': {cursor: 'pointer', borderBottom: '3px solid #96272D', background: 'none'}}}>
+            <Button variant='text' color='secondary' size='large' onClick={() => navigate('/services')} sx={{ml: '20px', borderRadius: '0px', '&:hover': {cursor: 'pointer', borderBottom: '3px solid #96272D', background: 'none'}}}>
               <strong>Services</strong>
             </Button>
-            <Button variant='text' color='secondary' size='large' href='/schedule' sx={{ml: '20px', borderRadius: '0px', '&:hover': {cursor: 'pointer', borderBottom: '3px solid #96272D', background: 'none'}}}>
+            <Button variant='text' color='secondary' size='large' onClick={() => navigate('/schedule')} sx={{ml: '20px', borderRadius: '0px', '&:hover': {cursor: 'pointer', borderBottom: '3px solid #96272D', background: 'none'}}}>
               <strong>Book A Detail</strong>
             </Button>
           </Box>
@@ -54,7 +54,7 @@ function NavBar() {
               <strong>Logout</strong>
             </Button> 
             :
-            <Button variant='contained' size='large' href='/register' sx={{border: 'none', borderRadius: '40px', outline: 'none', padding: '15px', paddingLeft: '40px', paddingRight: '40px'}}>
+            <Button variant='contained' size='large' onClick={() => navigate('/register')} sx={{border: 'none', borderRadius: '40px', outline: 'none', padding: '15px', paddingLeft: '40px', paddingRight: '40px'}}>
               <strong>Register</strong>
             </Button> 
           }
